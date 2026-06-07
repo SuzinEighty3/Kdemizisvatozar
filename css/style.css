@@ -1,0 +1,717 @@
+/* ==========================================================================
+   DESIGN SYSTÉM & GLOBÁLNÍ STYLY - PORTFÓLIO POEZIE (ŠOŠANA ALBA)
+   ========================================================================== */
+
+/* Import písem z Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
+
+/* Definice CSS proměnných (Custom Properties) */
+:root {
+  /* Barevná paleta (Světlé pastely - Ethereal & Watercolor) */
+  --color-bg-space: #fbfbfc;
+  --color-bg-deep: #f1f5f9;
+  --color-bg-abyss: #e2e8f0;
+
+  --color-teal-primary: #8da9b0;
+  /* Celadon blue */
+  --color-teal-glow: rgba(141, 169, 176, 0.3);
+  --color-teal-muted: #cbd5e1;
+  --color-teal-dark: #64748b;
+
+  --color-pearl-silver: #755252;
+  /* Sytější zemitá pro hlavičku/logo */
+  --color-pearl-glow: rgba(232, 213, 209, 0.4);
+
+  --color-text-main: #9E7A7A;
+  --color-text-muted: #5c3e3e;
+  --color-text-dark: #331f1f;
+
+  /* Typografie (Fluidní velikosti pomocí clamp()) */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --fs-h1: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+  --fs-h2: clamp(1.8rem, 3.5vw + 0.5rem, 3.5rem);
+  --fs-h3: clamp(1.35rem, 2vw + 0.5rem, 2.2rem);
+  --fs-body: clamp(0.95rem, 0.4vw + 0.8rem, 1.15rem);
+  --fs-poetry: clamp(1.15rem, 0.8vw + 0.9rem, 1.65rem);
+  --fs-nav: clamp(0.9rem, 0.2vw + 0.8rem, 1.05rem);
+
+  /* Rozestupy (Spacing) */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* Animace & Přechody */
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   ZÁKLADNÍ RESETY & GLOBÁLNÍ NASTAVENÍ
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+
+body {
+  /* Pozadí — přirozené měřítko, bez brutálního roztažení */
+  background-image: url('../poems_background1.jpeg') !important;
+  background-size: 100% auto !important;
+  background-position: top center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-color: #f7f9fa !important;
+
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Hlavní plátno — omezení šířky obsahu na ultra-širokých monitorech */
+.site-canvas {
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Typografické základy */
+h1,
+h2,
+h3,
+h4,
+.font-serif {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+
+p,
+span,
+a,
+button,
+input,
+textarea {
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+/* Skrýt scrollbar pro čistší vzhled, ale zachovat funkčnost */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-space);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-teal-glow);
+}
+
+/* Pomocné třídy */
+.container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+.text-teal {
+  color: var(--color-teal-primary);
+  text-shadow: 0 0 10px var(--color-teal-glow);
+}
+
+.text-pearl {
+  color: var(--color-pearl-silver);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: none;
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.25),
+    0 8px 32px rgba(0, 0, 0, 0.04);
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.35),
+    0 0 40px rgba(186, 230, 253, 0.25),
+    0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* Vynucené odstranění rámečků na kartách básní ve VŠECH stavech */
+.poetry-card,
+.poetry-card:hover,
+.poetry-card:focus,
+.poetry-card:active,
+.poetry-modal__card,
+.poetry-modal__card:hover,
+.poetry-modal__card:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+
+
+.header {
+  width: 100%;
+  z-index: 100;
+  padding: 2rem 0;
+  transition: var(--transition-smooth);
+  position: relative !important;
+  padding-bottom: 2rem !important;
+  /* Vytvoření dýchatelného prostoru pod textem */
+}
+
+.header__gold-line {
+  display: block !important;
+  width: 100% !important;
+  max-width: 900px !important;
+  height: auto !important;
+  margin: 1.5rem auto 0 !important;
+  opacity: 0.85 !important;
+}
+
+.header__logo {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400 !important;
+  letter-spacing: 4px !important;
+  color: #755252 !important;
+  text-transform: uppercase;
+}
+
+.header__subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--color-pearl-silver);
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   POETRY MATRIX (MODUL TVORBY)
+   ========================================================================== */
+
+/* 1. Kontejner mřížky — striktně 3 buňky vedle sebe */
+.poetry__grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 3rem !important;
+  max-width: 1200px !important;
+  margin: 4rem auto !important;
+  padding: 0 2rem !important;
+}
+
+/* ============================================================
+   2. Skleněná buňka — průhledný glassmorphism
+   ============================================================ */
+
+/* Sdílené hrany skla — platí pro mřížku i modal */
+/* Sdílené hrany skla — platí pro mřížku i modal */
+.poetry-card,
+.poetry-card.glass-card,
+.poetry-modal__card.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Jemná, poloprůhledná hrana skla */
+  border-radius: 20px !important;
+  overflow: hidden !important; /* Zpět na přirozený ořez */
+  position: relative !important;
+  transition: all 0.4s ease !important; /* Plynulý přechod pro hover efekt */
+}
+
+/* Karta v mřížce — čistý, průhledný glass */
+.poetry-card.glass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 3rem 2rem !important;
+
+  /* Průhledné pozadí — pozadí pod kartou musí prosvítat */
+  background: rgba(255, 255, 255, 0.25) !important;
+
+  /* Blur bez brightness/saturate — čistý efekt zastřeného skla */
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    0 8px 32px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Jemné zesvětlení při najetí myší (přesně podle původní vize) */
+.poetry-card.glass-card:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important; /* Buňka zlehka a elegantně dýchne světlem */
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1) !important; /* Velmi měkká aura pod kartou */
+}
+
+
+
+
+
+
+.poem-decoration {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.6;
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: var(--transition-smooth);
+}
+
+.poetry-card.glass-card:hover .poem-decoration {
+  opacity: 0.8;
+}
+
+
+
+/* ── 3. Typografie — Zemitý kontrast ──────────────────────────── */
+
+/* Nadpis básně na kartě */
+.poetry-card__title {
+  font-family: 'Playfair Display', serif !important;
+  color: #9E7A7A !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  font-size: clamp(1.4rem, 2vw, 1.8rem) !important;
+  text-align: center !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: 500 !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Oddělovač / Hvězdička */
+.poetry-card__divider {
+  color: #9E7A7A !important;
+  opacity: 0.6 !important;
+  font-size: 1rem !important;
+  text-align: center !important;
+  margin-bottom: 2rem !important;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Zabití masky a omezení výšky uvnitř modalu */
+.poetry-modal__card * {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  max-height: none !important;
+}
+
+/* Wrapper pro ořez textu do ztracena (pouze v mřížce) */
+.poetry-card__text-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-height: 80px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Náhled básně na kartě */
+.poetry-card__fulltext {
+  font-family: 'Playfair Display', serif !important;
+  font-style: italic !important;
+  color: #9E7A7A !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  font-size: 1rem !important;
+  text-align: center !important;
+  margin: 0;
+}
+
+/* ── Responzivita ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .poetry__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .poetry__grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+
+
+/* ==========================================================================
+   MODÁLNÍ OKNO / LIGHTBOX PRO ČTENÍ BÁSNÍ
+   ========================================================================== */
+.poetry-modal {
+  border: none;
+  background: transparent;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: none;
+  /* Skryté, dialog[open] přepíše na flex v JS */
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    display 0.5s allow-discrete,
+    overlay 0.5s allow-discrete;
+}
+
+.poetry-modal[open] {
+  display: flex;
+}
+
+.poetry-modal.poetry-modal--open {
+  opacity: 1;
+}
+
+/* Pozadí modálního okna (backdrop) */
+.poetry-modal::backdrop {
+  background-color: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(0px) brightness(1);
+  -webkit-backdrop-filter: blur(0px) brightness(1);
+  transition: backdrop-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-backdrop-filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.poetry-modal.poetry-modal--open::backdrop {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px) brightness(1.05);
+  -webkit-backdrop-filter: blur(12px) brightness(1.05);
+}
+
+/* Karta uprostřed modálního okna — specifické vlastnosti (vizuál dědí ze sdíleného bloku) */
+.poetry-modal__card.glass-card {
+  position: relative !important;
+  width: 90% !important;
+  max-width: 850px !important;
+  /* Široké elegantní plátno */
+  max-height: 85vh !important;
+  overflow: hidden !important;
+  /* Zabrání posunu rámečku a ořízne obsah na rohy */
+  padding: 0 !important;
+  margin: auto !important;
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch;
+  text-align: center;
+  transform: scale(0.93) translateY(10px);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+
+
+
+
+.poetry-modal.poetry-modal--open .poetry-modal__card {
+  transform: scale(1) translateY(0);
+}
+
+/* Sticky hlavička modálu — křížek zůstává viditelný při scrollování */
+.poetry-modal__header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1.2rem 0.5rem;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+/* Obsah modálu — scrollovatelná oblast */
+.poetry-modal__body {
+  padding: 0.5rem 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto !important;
+  /* Zde se bude posouvat pouze text */
+  overflow-x: hidden !important;
+  flex: 1 !important;
+  width: 100% !important;
+  padding-top: 0 !important;
+}
+
+/* Přesunutí designu scrollbaru z obalu na vnitřní tělo */
+.poetry-modal__body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.poetry-modal__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.poetry-modal__body::-webkit-scrollbar-thumb {
+  background: rgba(117, 82, 82, 0.3);
+  border-radius: 10px;
+}
+
+.poetry-modal__body::-webkit-scrollbar-thumb:hover {
+  background: rgba(117, 82, 82, 0.55);
+}
+
+/* Zavírací tlačítko (křížek) — statická pozice uvnitř sticky hlavičky */
+.poetry-modal__close {
+  position: static;
+  background: transparent;
+  border: none;
+  color: #E0A99E;
+  font-size: 1.8rem;
+  font-weight: 200;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition-fast);
+  opacity: 0.65;
+  border-radius: 50%;
+}
+
+.poetry-modal__close:hover {
+  color: #835C5C;
+  transform: scale(1.15);
+  opacity: 1;
+  background: rgba(158, 122, 122, 0.08);
+}
+
+/* Titulek básně v modálu — kompaktní, čitelný */
+.poetry-modal__title {
+  font-family: 'Playfair Display', serif !important;
+  color: #9E7A7A !important;
+  font-size: clamp(1.8rem, 3vw, 2.2rem) !important;
+  text-align: center !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+  font-weight: 500 !important;
+}
+
+/* Text básně v modálu */
+.poetry-modal__text {
+  font-family: 'Playfair Display', serif !important;
+  color: #755252 !important;
+  font-size: 1.15rem !important;
+  font-weight: 400 !important;
+  line-height: 1.0 !important;
+  text-align: center !important;
+  white-space: pre-wrap !important;
+  margin-top: 2rem !important;
+  padding-bottom: 2rem !important;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* ZRUŠENÍ PŘEDCHOZÍHO HACKU - <br> se musí chovat přirozeně */
+.poetry-modal__text br {
+  display: inline !important;
+  content: normal !important;
+  margin: 0 !important;
+}
+
+/* Cílené vytvoření mezery POUZE mezi slokami (dvě značky <br> za sebou z HTML) */
+.poetry-modal__text br+br {
+  display: block !important;
+  content: "" !important;
+  margin-top: 1rem !important;
+  /* Prostor výhradně mezi odstavci */
+}
+
+
+
+/* ==========================================================================
+   KONTAKTNÍ ZÁVĚR & DOPIS (FOOTER AREA)
+   ========================================================================== */
+.footer {
+  padding-top: var(--space-lg);
+  position: relative;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.contact-header__title {
+  font-family: 'Playfair Display', serif !important;
+  font-style: italic !important;
+  color: #755252 !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem) !important;
+  letter-spacing: 1px !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+  margin-bottom: 1rem !important;
+}
+
+/* ── Éterický jednořádkový formulář ──────────────────────────── */
+
+/* Kontejner pro input a tlačítko */
+.ethereal-form__wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  max-width: 600px !important;
+  margin: 2rem auto !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(158, 122, 122, 0.3) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+  overflow: hidden !important;
+}
+
+/* Textové pole */
+.ethereal-form__input {
+  flex-grow: 1 !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 12px 20px !important;
+  font-family: 'Playfair Display', serif !important;
+  font-size: 1.15rem !important;
+  color: var(--color-pearl-silver) !important;
+  outline: none !important;
+}
+
+.ethereal-form__input::placeholder {
+  color: rgba(117, 82, 82, 0.5) !important;
+  font-style: italic !important;
+}
+
+/* Tlačítko */
+.ethereal-form__submit {
+  background: rgba(232, 220, 213, 0.8) !important;
+  border: none !important;
+  border-left: 1px solid rgba(158, 122, 122, 0.2) !important;
+  padding: 12px 25px !important;
+  font-family: 'Playfair Display', serif !important;
+  font-size: 1.15rem !important;
+  color: var(--color-pearl-silver) !important;
+  cursor: pointer !important;
+  transition: background 0.3s ease !important;
+  white-space: nowrap !important;
+}
+
+.ethereal-form__submit:hover {
+  background: rgba(212, 196, 196, 0.9) !important;
+}
+
+/* Status zprávy pod formulářem */
+.contact-form__status {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  min-height: 1.5rem;
+  transition: var(--transition-fast);
+}
+
+.contact-form__status--success {
+  color: #5c3e3e;
+}
+
+.contact-form__status--error {
+  color: #f43f5e;
+}
+
+
+/* ==========================================================================
+   PATIČKA
+   ========================================================================== */
+.footer__content {
+  margin: 5rem auto 2rem;
+  max-width: 600px;
+  text-align: center;
+}
+
+.footer__divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.footer__credits {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
