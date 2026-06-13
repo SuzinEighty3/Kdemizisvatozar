@@ -563,7 +563,7 @@ button {
   color: #9E7A7A !important;
   font-size: clamp(1.8rem, 3vw, 2.2rem) !important;
   text-align: center !important;
-  margin-top: 0.5rem !important;
+  margin-top: 0.1rem !important;
   margin-bottom: 0.5rem !important;
   line-height: 1.2 !important;
   text-transform: uppercase;
@@ -582,7 +582,7 @@ button {
   line-height: 1.0 !important;
   text-align: center !important;
   white-space: pre-wrap !important;
-  margin-top: 2rem !important;
+  margin-top: 0.6rem !important;
   padding-bottom: 2rem !important;
   margin-bottom: 0;
   position: relative;
@@ -784,7 +784,7 @@ button {
 .hero-title,
 .main-title {
   font-family: 'Playfair Display', serif !important;
-  color: #7A3E3E !important;
+  color: #7a3e3e !important;
   /* Sytá vínově-hnědá */
   font-weight: 600 !important;
   /* Zásadní ztučnění z původních 300 */
@@ -820,4 +820,38 @@ button {
   /* Maximální ztmavení pro bezproblémové čtení poezie */
   font-style: italic !important;
   font-weight: 400 !important;
+}
+
+/* --- Optimalizace poezie pro mobily --- */
+@media (max-width: 768px) {
+    
+    /* 1. Maximalizace prostoru uvnitř skleněného detailu (modalu) */
+    .poetry-modal__card, 
+    .poetry-card.glass-card {
+        padding: 2.5rem 1.2rem 2rem 1.2rem !important; /* Výrazně zúžíme boční okraje, aby měl text místo */
+    }
+
+    /* 2. Typografie básně na mobilu - klíč k nezalamování veršů */
+    .poetry-modal__card p,
+    .poetry-card__text,
+    .poetry-card p {
+        font-size: 0.95rem !important; /* Jemné zmenšení textu, aby se dlouhé věty vešly na jeden řádek */
+        line-height: 1.6 !important; /* Optimální mezera mezi řádky pro dobrou čitelnost */
+        letter-spacing: 0.02em !important; /* Mírné stažení rozpalu, text drží lépe pospolu */
+        
+        /* Držíme centrování, ale s maximálním využitím šířky */
+        text-align: center !important; 
+        width: 100% !important;
+        max-width: 100% !important;
+        white-space: normal !important;
+        word-break: keep-all !important; /* Zabrání ošklivému trhání slov uprostřed */
+    }
+
+    /* 3. Úprava nadpisu básně v detailu */
+    .poetry-modal__card h2,
+    .poetry-card__title {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+        letter-spacing: 0.1em !important;
+    }
 }
