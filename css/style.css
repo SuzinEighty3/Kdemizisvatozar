@@ -811,7 +811,7 @@ button {
 .poetry-card__title {
   color: #7A3E3E !important;
   /* Stejná vínově-hnědá jako u hlavního nadpisu */
-  font-weight: 900 !important;
+  font-weight: 500 !important;
 }
 
 .poetry-card__text,
