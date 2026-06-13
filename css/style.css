@@ -287,7 +287,8 @@ button {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  padding: 3rem 1.4rem !important;
+  min-height: 250px !important;
+  padding: 2.4rem 1.4rem !important;
 
   /* Průhledné pozadí — pozadí pod kartou musí prosvítat */
   background: rgba(255, 255, 255, 0.25) !important;
@@ -788,7 +789,7 @@ button {
   /* Sytá vínově-hnědá */
   font-weight: 600 !important;
   /* Zásadní ztučnění z původních 300 */
-  letter-spacing: 0.15em !important;
+  letter-spacing: 0.3em !important;
   /* Kompaktnější rozpal písmen */
   margin-bottom: 0.8rem !important;
   font-size: clamp(2rem, 3vw, 3rem) !important;
