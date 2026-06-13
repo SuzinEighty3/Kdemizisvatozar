@@ -691,10 +691,10 @@ button {
   justify-content: center !important;
   align-items: stretch !important;
   max-width: 600px !important;
-  margin: 1rem auto !important;
+  margin: 2rem auto !important;
   background: rgba(255, 255, 255, 0.4) !important;
   border: 1px solid rgba(158, 122, 122, 0.3) !important;
-  border-radius: 25px !important;
+  border-radius: 4px !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
   overflow: hidden !important;
 }
@@ -704,9 +704,9 @@ button {
   flex-grow: 1 !important;
   background: transparent !important;
   border: none !important;
-  padding: 12px 14px !important;
+  padding: 12px 20px !important;
   font-family: 'Playfair Display', serif !important;
-  font-size: 1rem !important;
+  font-size: 1.15rem !important;
   color: var(--color-pearl-silver) !important;
   outline: none !important;
 }
@@ -721,9 +721,9 @@ button {
   background: rgba(232, 220, 213, 0.8) !important;
   border: none !important;
   border-left: 1px solid rgba(158, 122, 122, 0.2) !important;
-  padding: 12px 15px !important;
+  padding: 12px 25px !important;
   font-family: 'Playfair Display', serif !important;
-  font-size: 1rem !important;
+  font-size: 1.15rem !important;
   color: var(--color-pearl-silver) !important;
   cursor: pointer !important;
   transition: background 0.3s ease !important;
@@ -910,49 +910,4 @@ button {
     margin-bottom: 0.5rem !important;
     letter-spacing: 0.1em !important;
   }
-}
-
-/* --- Lotosový detail na specifické kartě --- */
-.poem-lotos {
-    position: absolute !important;
-    bottom: -52px !important; /* Organický přesah ven z karty */
-    left: 130px !important;
-    width: 125px !important; /* Velikost květu */
-    opacity: 0.4 !important; /* V základu je lotos jemně poloprůhledný */
-    pointer-events: none !important; /* Aby neblokoval klikání na text karty */
-    z-index: 1 !important; /* Pod textem, ale nad pozadím */
-    transition: opacity 0.5s ease !important;
-    filter: drop-shadow(0 0 0 rgba(255,255,255,0)) !important;
-}
-
-/* Definice třpytivé / pulzující animace */
-@keyframes lotos-sparkle {
-    0% { 
-        filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
-        transform: scale(1) rotate(-3deg); 
-    }
-    50% { 
-        filter: drop-shadow(0 0 25px rgba(255, 235, 215, 0.9)) brightness(1.25); 
-        transform: scale(1.04) rotate(0deg); 
-    }
-    100% { 
-        filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
-        transform: scale(1) rotate(-3deg); 
-    }
-}
-
-/* Spuštění animace třpytu při najetí na celou kartu */
-.poetry-card.glass-card:hover .poem-lotos {
-    opacity: 0.9 !important; /* Lotos se zviditelní */
-    animation: lotos-sparkle 2.5s infinite ease-in-out !important; /* Pulzující třpyt a jemný pohyb */
-}
-
-/* Skrytí lotosu na mobilu, aby text nebyl zbytečně překrytý (volitelné) */
-@media (max-width: 768px) {
-    .poem-lotos {
-        width: 90px !important; /* Zmenšení na mobilech */
-        bottom: -5px !important;
-        left: -5px !important;
-        opacity: 0.2 !important; /* Ještě tlumenější, aby nerušil čtení */
-    }
 }
