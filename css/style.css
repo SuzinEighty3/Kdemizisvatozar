@@ -391,17 +391,68 @@ button {
 }
 
 /* ── Responzivita ────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .poetry__grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 2.5rem !important;
-  }
-}
-
+/* --- ČISTÁ VERZE PRO MOBILY (Absolutní reset) --- */
 @media (max-width: 768px) {
+
+  /* 1. Návrat k jednomu úhlednému sloupci karet */
   .poetry__grid {
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
+  }
+
+  /* 2. Hlavička: Zarovnání na střed a zmenšení, aby se ŠOŠANA ALBA vešlo na jeden řádek */
+  .hero-section,
+  .hero-quote,
+  .hero-title,
+  .hero-subtitle,
+  .main-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero-title,
+  .main-title {
+    font-size: 1.8rem !important;
+    /* Menší velikost zaručí jeden řádek */
+    letter-spacing: 0.15em !important;
+  }
+
+  /* 3. Náhled básně: Zvětšení okénka, aby text okamžitě nezmizel v mlze */
+  .poetry-card__text-wrapper {
+    max-height: 130px !important;
+    /* Dáme textu mnohem víc místa pro náhled */
+  }
+
+  .poetry-card__fulltext {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+  }
+
+  /* 4. Otevřená báseň v modálu: Návrat k jednoduchému vycentrování */
+  .poetry-modal__body {
+    padding: 1rem 1.2rem 3rem !important;
+    /* Vrácení prostoru do stran */
+  }
+
+  .poetry-modal__text {
+    text-align: center !important;
+    /* Klasické vycentrování beze změn velikostí */
+    width: 100% !important;
+  }
+
+  /* 5. Formulář v patičce hezky pod sebou */
+  .ethereal-form {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .ethereal-form__input,
+  .ethereal-form__submit {
+    width: 100% !important;
+    border-radius: 30px !important;
+    text-align: center !important;
   }
 }
 
@@ -560,7 +611,7 @@ button {
 /* Titulek básně v modálu — kompaktní, čitelný */
 .poetry-modal__title {
   font-family: 'Playfair Display', serif !important;
-  color: #9E7A7A !important;
+  color: #7a3e3e !important;
   font-size: clamp(1.8rem, 3vw, 2.2rem) !important;
   text-align: center !important;
   margin-top: 0.1rem !important;
@@ -579,7 +630,7 @@ button {
   color: #755252 !important;
   font-size: 1.15rem !important;
   font-weight: 400 !important;
-  line-height: 1.0 !important;
+  line-height: 1 !important;
   text-align: center !important;
   white-space: pre-wrap !important;
   margin-top: 0.6rem !important;
