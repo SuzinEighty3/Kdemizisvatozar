@@ -912,15 +912,19 @@ button {
   }
 }
 
-/* --- Lotosový detail na specifické kartě --- */
+/* --- Lotosový detail na specifické kartě (ukotvení vpravo) --- */
 .poem-lotos {
     position: absolute !important;
-    bottom: -52px !important; /* Organický přesah ven z karty */
-    left: 130px !important;
-    width: 125px !important; /* Velikost květu */
-    opacity: 0.4 !important; /* V základu je lotos jemně poloprůhledný */
-    pointer-events: none !important; /* Aby neblokoval klikání na text karty */
-    z-index: 1 !important; /* Pod textem, ale nad pozadím */
+    bottom: -50px !important; 
+    
+    /* Změna kotvy: hřebík zatlučeme zprava a zleva ho vytáhneme */
+    right: -15px !important; 
+    left: auto !important; /* Kritické: anuluje jakékoliv předchozí pokusy zleva */
+    
+    width: 130px !important;
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
     transition: opacity 0.5s ease !important;
     filter: drop-shadow(0 0 0 rgba(255,255,255,0)) !important;
 }
@@ -947,12 +951,13 @@ button {
     animation: lotos-sparkle 2.5s infinite ease-in-out !important; /* Pulzující třpyt a jemný pohyb */
 }
 
-/* Skrytí lotosu na mobilu, aby text nebyl zbytečně překrytý (volitelné) */
+/* Skrytí/zmenšení lotosu na mobilu (ukotvení vpravo) */
 @media (max-width: 768px) {
     .poem-lotos {
-        width: 90px !important; /* Zmenšení na mobilech */
+        width: 90px !important;
         bottom: -5px !important;
-        left: -5px !important;
-        opacity: 0.2 !important; /* Ještě tlumenější, aby nerušil čtení */
+        right: -5px !important; /* Držíme se vpravo i na telefonu */
+        left: auto !important;
+        opacity: 0.2 !important;
     }
 }
