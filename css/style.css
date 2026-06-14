@@ -958,6 +958,6 @@ button {
         bottom: -5px !important;
         right: -5px !important; /* Držíme se vpravo i na telefonu */
         left: auto !important;
-        opacity: 0.2 !important;
+     /*   opacity: 0.2 !important;*/
     }
 }
