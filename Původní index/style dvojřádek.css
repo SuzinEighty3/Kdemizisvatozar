@@ -965,3 +965,82 @@ button {
         animation: lotos-sparkle 3.5s infinite ease-in-out !important;
     }
 }
+/* ==========================================================================
+   NÁSTUP VERTIKÁLNÍHO FORMULÁŘE S EMAILEM (OPRAVA ROZHÁZENÍ)
+   ========================================================================== */
+
+/* Celý formulář srovnáme do svislé osy a vycentrujeme */
+.ethereal-form {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    max-width: 550px !important;
+    margin: 2rem auto !important;
+    width: 100% !important;
+}
+
+/* Skleněný obal: Změna z řádku na sloupec (políčka budou pod sebou) */
+.ethereal-form__wrapper {
+    display: flex !important;
+    flex-direction: column !important; /* Klíčová změna: prvky pod sebou */
+    justify-content: center !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    border: 1px solid rgba(158, 122, 122, 0.25) !important;
+    border-radius: 15px !important; /* Jemné zaoblení celé skleněné karty */
+    overflow: hidden !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Úprava obou textových polí, aby byla stejná */
+.ethereal-form__input {
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 16px 20px !important;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.05rem !important;
+    color: #755252 !important;
+    outline: none !important;
+    text-align: center !important; /* Text na střed */
+}
+
+/* Vnitřní jemná linka mezi políčky uvnitř skla */
+.ethereal-form__inner-divider {
+    width: 75%;
+    height: 1px;
+    background: rgba(158, 122, 122, 0.15);
+    margin: 0 auto;
+}
+
+/* Nové samostatné tlačítko - elegantní pilulka pod sklem */
+.ethereal-form__submit-btn {
+    background: rgba(232, 220, 213, 0.8) !important;
+    border: 1px solid rgba(158, 122, 122, 0.3) !important;
+    border-radius: 30px !important; /* Plné zaoblení */
+    padding: 12px 45px !important;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.1rem !important;
+    color: #755252 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    white-space: nowrap !important;
+}
+
+.ethereal-form__submit-btn:hover {
+    background: rgba(212, 196, 196, 0.9) !important;
+    transform: translateY(-1px);
+}
+
+/* Pojistka pro mobilní zobrazení, aby se to netlouklo */
+@media (max-width: 768px) {
+    .ethereal-form__input {
+        font-size: 0.95rem !important;
+        padding: 14px 15px !important;
+    }
+    .ethereal-form__submit-btn {
+        width: auto !important; /* Tlačítko zůstane elegantní pilulkou i na mobilu */
+        font-size: 1rem !important;
+    }
+}

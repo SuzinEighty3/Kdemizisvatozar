@@ -958,6 +958,77 @@ button {
         bottom: -5px !important;
         right: -5px !important; /* Držíme se vpravo i na telefonu */
         left: auto !important;
-        opacity: 0.2 !important;
+        /* Zásadní změna pro mobil: Lotos je viditelný a trvale jemně pulzuje */
+        opacity: 0.8 !important; 
+        
+        /* Animaci rovnou zavoláme zde, trochu ji zpomalíme (3.5s), ať působí klidněji */
+        animation: lotos-sparkle 3.5s infinite ease-in-out !important;
+    }
+}
+
+/* --- Svatozář na kartě Tam, kde mizí svatozář --- */
+.poem-halo {
+    position: absolute !important;
+    top: -75px !important;  /* Zde si nech své vlastní hodnoty */
+    left: -11px !important;  /* Zde si nech své vlastní hodnoty */
+    width: 137px !important;
+    opacity: 0.65 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    transition: opacity 0.5s ease !important;
+    
+    /* ZDE JE OPRAVA: Odstraněn zámek !important, aby animace mohla dýchat */
+    transform: rotate(-20deg); 
+    filter: drop-shadow(0 0 0 rgba(255,255,255,0));
+}
+
+
+/* Definice pulzující animace - měníme jen ŠÍŘKU a ZÁŘI */
+@keyframes halo-pulse {
+    0% { 
+        filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
+        width: 90px !important; /* Základní velikost */
+    }
+    50% { 
+        filter: drop-shadow(0 0 20px rgba(255, 235, 215, 0.9)) brightness(1.2); 
+        width: 100px !important; /* Zvětšení o cca 10% */
+    }
+    100% { 
+        filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
+        width: 90px !important; /* Návrat na základní velikost */
+    }
+}
+
+/* Spuštění animace při najetí myší na kartu */
+.poetry-card.glass-card:hover .poem-halo {
+    opacity: 0.9 !important;
+    animation: halo-pulse 2.5s infinite ease-in-out !important;
+}
+
+/* Úprava pro mobily (trvalé dýchání) */
+@media (max-width: 768px) {
+    .poem-halo {
+        /* Na mobilu chceme menší základ, proto musíme vytvořit extra animaci */
+        width: 110px !important; 
+        top: -43px !important;
+        left: 24px !important;
+        opacity: 0.8 !important; 
+        animation: halo-pulse-mobile 3.5s infinite ease-in-out !important;
+    }
+}
+
+/* Samostatná animace pro mobil (aby pulzovala z menšího základu) */
+@keyframes halo-pulse-mobile {
+    0% { 
+        filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
+        width: 70px !important; 
+    }
+    50% { 
+        filter: drop-shadow(0 0 20px rgba(255, 235, 215, 0.9)) brightness(1.2); 
+        width: 78px !important; 
+    }
+    100% { 
+        filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
+        width: 70px !important; 
     }
 }

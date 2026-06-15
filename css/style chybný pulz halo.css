@@ -965,3 +965,56 @@ button {
         animation: lotos-sparkle 3.5s infinite ease-in-out !important;
     }
 }
+
+/* --- Svatozář na kartě Tam, kde mizí svatozář (ukotvení vlevo nahoře) --- */
+.poem-halo {
+    position: absolute !important;
+    top: -75px !important;  /* Hřebík shora, jemný přesah ven */
+    left: -11px !important; /* Hřebík zleva */
+    width: 137px !important; /* Můžeš zvětšit/zmenšit podle oka */
+    opacity: 0.65 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    transition: opacity 0.5s ease !important;
+    
+    /* Zde nastavujeme ten statický náklon (mínus znamená doleva) */
+    transform: rotate(-20deg) !important; 
+    filter: drop-shadow(0 0 0 rgba(255,255,255,0)) !important;
+}
+
+/* Definice pulzující animace pro svatozář (Zvětšování a zmenšování) */
+@keyframes halo-pulse {
+    0% { 
+        filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
+        /* Musíme tu držet ten náklon -15deg, jinak by se narovnala! */
+        transform: scale(1) rotate(-15deg); 
+    }
+    50% { 
+        filter: drop-shadow(0 0 20px rgba(255, 235, 215, 0.9)) brightness(1.2); 
+        /* Tady probíhá pulz: zvětšení na 1.08 (8%) */
+        transform: scale(1.08) rotate(-15deg); 
+    }
+    100% { 
+        filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
+        transform: scale(1) rotate(-15deg); 
+    }
+}
+
+/* Spuštění animace při najetí (Hover na PC) */
+.poetry-card.glass-card:hover .poem-halo {
+    opacity: 0.9 !important; /* Krásně se rozzáří */
+    animation: halo-pulse 2.5s infinite ease-in-out !important;
+}
+
+/* Skrytí/zmenšení svatozáře na mobilu (Trvalá animace) */
+@media (max-width: 768px) {
+    .poem-halo {
+        width: 110px !important; /* Decentnější velikost pro displej */
+        top: -43px !important;
+        left: 24px !important;
+        
+        /* Trvale viditelná a pulzující */
+        opacity: 0.8 !important; 
+        animation: halo-pulse 3.5s infinite ease-in-out !important;
+    }
+}

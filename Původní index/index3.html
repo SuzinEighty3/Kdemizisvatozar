@@ -471,19 +471,13 @@ když duše se radostí v základech třese,<br>
             <h2 class="contact-header__title">Zde můžete zanechat, co máte na srdci...</h2>
           </div>
 
-          <form action="odeslat.php" method="POST" class="contact-form ethereal-form" id="js-contact-form" novalidate>
-  <div class="ethereal-form__wrapper">
-    
-    <input type="email" id="form-email" name="email" class="ethereal-form__input" placeholder="Váš e-mail (nepovinný, pokud si přejete odpověď)">
-    
-    <div class="ethereal-form__inner-divider"></div>
-    
-    <input type="text" id="form-thought" name="myslenka" class="ethereal-form__input" placeholder="Vaše myšlenka..." required>
-    
-  </div> <button type="submit" class="ethereal-form__submit-btn">Odeslat do éteru</button>
-  
-  <div class="contact-form__status" id="js-form-status" aria-live="polite"></div>
-</form>
+          <form class="contact-form ethereal-form" id="js-contact-form" novalidate>
+            <div class="ethereal-form__wrapper">
+<input type="text" id="form-thought" class="ethereal-form__input" placeholder="Vaše myšlenka" required>
+<button type="submit" class="ethereal-form__submit">Odeslat do éteru</button>
+            </div>
+            <div class="contact-form__status" id="js-form-status" aria-live="polite"></div>
+          </form>
 
           <footer class="footer__content">
             <div class="footer__divider"></div>
