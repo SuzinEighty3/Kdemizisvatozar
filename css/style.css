@@ -937,7 +937,7 @@ button {
     }
     50% { 
         filter: drop-shadow(0 0 25px rgba(255, 235, 215, 0.9)) brightness(1.25); 
-        transform: scale(1.04) rotate(0deg); 
+        transform: scale(1.1) rotate(0deg); 
     }
     100% { 
         filter: drop-shadow(0 0 5px rgba(255, 235, 215, 0.4)) brightness(1); 
@@ -948,7 +948,7 @@ button {
 /* Spuštění animace třpytu při najetí na celou kartu */
 .poetry-card.glass-card:hover .poem-lotos {
     opacity: 0.9 !important; /* Lotos se zviditelní */
-    animation: lotos-sparkle 2.5s infinite ease-in-out !important; /* Pulzující třpyt a jemný pohyb */
+    animation: lotos-sparkle 3.5s infinite ease-in-out !important; /* Pulzující třpyt a jemný pohyb */
 }
 
 /* Skrytí/zmenšení lotosu na mobilu (ukotvení vpravo) */
@@ -1003,18 +1003,18 @@ button {
 /* Spuštění animace při najetí myší na kartu */
 .poetry-card.glass-card:hover .poem-halo {
     opacity: 0.9 !important;
-    animation: halo-pulse 2.5s infinite ease-in-out !important;
+    animation: halo-pulse 4s infinite ease-in-out !important;
 }
 
 /* Úprava pro mobily (trvalé dýchání) */
 @media (max-width: 768px) {
     .poem-halo {
         width: 110px !important; /* Tvoje přesná velikost pro mobil */
-        top: -43px !important;
+        top: -48px !important;
         left: 24px !important;
         opacity: 0.8 !important; 
         
         /* Genialita scale(): Zavoláme stejnou animaci, ale ona se sama aplikuje na těch 110px */
-        animation: halo-pulse 3.5s infinite ease-in-out !important;
+        animation: halo-pulse 4s infinite ease-in-out !important;
     }
 }
